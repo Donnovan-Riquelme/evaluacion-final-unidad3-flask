@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Ejercicio 1 - Promedio y Estado</h1>
+
+        <form method="POST" action="{{ url_for('ejercicio1') }}">
+            <label for="nota1">Nota 1 (10 - 70):</label>
+            <input type="number" name="nota1" id="nota1" min="10" max="70" required>
+
+            <label for="nota2">Nota 2 (10 - 70):</label>
+            <input type="number" name="nota2" id="nota2" min="10" max="70" required>
+
+            <label for="nota3">Nota 3 (10 - 70):</label>
+            <input type="number" name="nota3" id="nota3" min="10" max="70" required>
+
+            <label for="asistencia">Asistencia % (0 - 100):</label>
+            <input type="number" name="asistencia" id="asistencia" min="0" max="100" required>
+
+            <button type="submit" class="boton">Enviar</button>
+        </form>
+
+        {% if resultado %}
+        <div class="resultado">
+            <h2>Resultado</h2>
+            <p><strong>Promedio:</strong> {{ resultado.promedio }}</p>
+            <p><strong>Estado:</strong> {{ resultado.estado }}</p>
+        </div>
+        {% endif %}
+
+        <a href="{{ url_for('inicio') }}" class="enlace-volver">Volver al inicio</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Contenedor principal */
+.contenedor {
+    max-width: 500px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333333;
+    margin-bottom: 25px;
+    font-size: 1.5em;
+}
+
+/* Formularios */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+}
+
+label {
+    font-weight: bold;
+    color: #444444;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 1em;
+}
+
+/* Botones */
+.boton {
+    display: inline-block;
+    background-color: #2a7ae2;
+    color: #ffffff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.boton:hover {
+    background-color: #1a5ab8;
+}
+
+/* Botones de la pagina principal */
+.botones {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.botones .boton {
+    padding: 18px 30px;
+    font-size: 1.2em;
+}
+
+/* Resultado */
+.resultado {
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #e8f5e9;
+    border-radius: 8px;
+    border: 1px solid #c8e6c9;
+}
+
+.resultado h2 {
+    margin-top: 0;
+    color: #2e7d32;
+}
+
+.resultado p {
+    margin: 8px 0;
+    color: #333333;
+}
+
+/* Enlace para volver */
+.enlace-volver {
+    display: inline-block;
+    margin-top: 20px;
+    color: #2a7ae2;
+    text-decoration: none;
+}
+
+.enlace-volver:hover {
+    text-decoration: underline;
+}
