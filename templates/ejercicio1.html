@@ -8,20 +8,17 @@
 </head>
 <body>
     <div class="contenedor">
-        <h1>Ejercicio 1 - Promedio y Estado</h1>
+        <h1>Ejercicio 1 - Pintureria</h1>
 
         <form method="POST" action="{{ url_for('ejercicio1') }}">
-            <label for="nota1">Nota 1 (10 - 70):</label>
-            <input type="number" name="nota1" id="nota1" min="10" max="70" required>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" required>
 
-            <label for="nota2">Nota 2 (10 - 70):</label>
-            <input type="number" name="nota2" id="nota2" min="10" max="70" required>
+            <label for="edad">Edad:</label>
+            <input type="number" name="edad" id="edad" min="1" required>
 
-            <label for="nota3">Nota 3 (10 - 70):</label>
-            <input type="number" name="nota3" id="nota3" min="10" max="70" required>
-
-            <label for="asistencia">Asistencia % (0 - 100):</label>
-            <input type="number" name="asistencia" id="asistencia" min="0" max="100" required>
+            <label for="cantidad">Cantidad de tarros de pintura:</label>
+            <input type="number" name="cantidad" id="cantidad" min="1" required>
 
             <button type="submit" class="boton">Enviar</button>
         </form>
@@ -29,8 +26,10 @@
         {% if resultado %}
         <div class="resultado">
             <h2>Resultado</h2>
-            <p><strong>Promedio:</strong> {{ resultado.promedio }}</p>
-            <p><strong>Estado:</strong> {{ resultado.estado }}</p>
+            <p><strong>Cliente:</strong> {{ resultado.nombre }}</p>
+            <p><strong>Total sin descuento:</strong> ${{ resultado.total_sin_descuento }}</p>
+            <p><strong>Descuento aplicado:</strong> {{ resultado.descuento }}%</p>
+            <p><strong>Total a pagar:</strong> ${{ resultado.total_a_pagar }}</p>
         </div>
         {% endif %}
 

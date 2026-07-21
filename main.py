@@ -9,54 +9,59 @@ def inicio():
     return render_template('index.html')
 
 
-# Ejercicio 1 - Calcular promedio y determinar estado
+# Ejercicio 1 - Calcular total con descuento segun edad
 @app.route('/ejercicio1', methods=['GET', 'POST'])
 def ejercicio1():
     resultado = None
 
     if request.method == 'POST':
-        nota1 = float(request.form['nota1'])
-        nota2 = float(request.form['nota2'])
-        nota3 = float(request.form['nota3'])
-        asistencia = float(request.form['asistencia'])
+        nombre = request.form['nombre']
+        edad = int(request.form['edad'])
+        cantidad = int(request.form['cantidad'])
 
-        # Calcular promedio
-        promedio = (nota1 + nota2 + nota3) / 3
+        precio_tarro = 9000
+        total_sin_descuento = cantidad * precio_tarro
 
-        # Determinar si aprueba o reprueba
-        if promedio >= 40 and asistencia >= 75:
-            estado = 'APROBADO'
+        # Determinar descuento segun edad
+        if edad < 18:
+            descuento = 0
+        elif edad <= 30:
+            descuento = 15
         else:
-            estado = 'REPROBADO'
+            descuento = 25
+
+        monto_descuento = int(total_sin_descuento * descuento / 100)
+        total_a_pagar = total_sin_descuento - monto_descuento
 
         resultado = {
-            'promedio': round(promedio, 1),
-            'estado': estado
+            'nombre': nombre,
+            'total_sin_descuento': total_sin_descuento,
+            'descuento': descuento,
+            'total_a_pagar': total_a_pagar
         }
 
     return render_template('ejercicio1.html', resultado=resultado)
 
 
-# Ejercicio 2 - Comparar longitud de nombres
+# Ejercicio 2 - Validar usuario y contraseña
 @app.route('/ejercicio2', methods=['GET', 'POST'])
 def ejercicio2():
     resultado = None
 
     if request.method == 'POST':
-        nombre1 = request.form['nombre1']
-        nombre2 = request.form['nombre2']
-        nombre3 = request.form['nombre3']
+        usuario = request.form['usuario']
+        contrasena = request.form['contrasena']
 
-        # Guardar los nombres en una lista
-        nombres = [nombre1, nombre2, nombre3]
-
-        # Buscar el nombre con mas caracteres
-        nombre_mayor = max(nombres, key=len)
-        cantidad_caracteres = len(nombre_mayor)
+        # Validar credenciales
+        if usuario == 'juan' and contrasena == 'admin':
+            mensaje = 'Bienvenido administrador juan'
+        elif usuario == 'pepe' and contrasena == 'user':
+            mensaje = 'Bienvenido usuario pepe'
+        else:
+            mensaje = 'Usuario o contraseña incorrectos.'
 
         resultado = {
-            'nombre': nombre_mayor,
-            'cantidad': cantidad_caracteres
+            'mensaje': mensaje
         }
 
     return render_template('ejercicio2.html', resultado=resultado)
